@@ -22,8 +22,8 @@ languages:
   en:
     languageName: English
     weight: 1
-  bn:
-    languageName: বাংলা
+  fr:
+    languageName: Français
     weight: 3
 
 # Force a locale to be use, really useful to develop the application ! Should be commented in production, the "weight" should rocks.
@@ -58,8 +58,8 @@ params:
   # Provide logos for your site. The inverted logo will be used in the initial
   # transparent navbar and the main logo will be used in the non-transparent navbar.
   logo:
-    main: /images/site/main-logo.png
-    inverted: /images/site/inverted-logo.png
+    main: /images/site/main-logo.jpg
+    inverted: /images/site/inverted-logo.jpg
     favicon: /images/site/favicon.png
 
   # GitHub repo of your site
@@ -96,7 +96,7 @@ params:
       enable: true
       # Share post on different social media
       shareButtons:
-        facebook: true
+        # facebook: true
         twitter: true
         linkedin: true
         reddit: true
@@ -279,9 +279,9 @@ params:
     # Show/hide newsletter section in the footer. Default is "true".
     # Currently, it supports "mailchimp".
     newsletter:
-      enable: true
-      provider: mailchimp
-      mailchimpURL: https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;id=094a24c76e
+      enable: false
+      # provider: mailchimp
+      # mailchimpURL: https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;id=094a24c76e
 
     # Show/hide disclaimer notice in the footer. Default is "false".
     disclaimer:
