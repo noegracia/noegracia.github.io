@@ -24,6 +24,7 @@ languages:
     languageName: English
     title: "John's Blog"
     weight: 1
+<<<<<<< HEAD:hugo.yaml
   bn:
     languageCode: bn
     languageName: বাংলা
@@ -31,6 +32,11 @@ languages:
     weight: 2
 # default language for the content
 defaultContentLanguage: en
+=======
+  fr:
+    languageName: Français
+    weight: 3
+>>>>>>> db4dead (feat: filling sections):config.yaml
 
 
 # Allow raw html in markdown file
@@ -64,8 +70,8 @@ params:
   # Provide logos for your site. The inverted logo will be used in the initial
   # transparent navbar and the main logo will be used in the non-transparent navbar.
   logo:
-    main: /images/site/main-logo.png
-    inverted: /images/site/inverted-logo.png
+    main: /images/site/main-logo.jpg
+    inverted: /images/site/inverted-logo.jpg
     favicon: /images/site/favicon.png
 
   # GitHub repo of your site
@@ -103,7 +109,7 @@ params:
       showAuthor: true # shows the author of post (defaults true)
       # Share post on different social media
       shareButtons:
-        facebook: true
+        # facebook: true
         twitter: true
         linkedin: true
         reddit: true
