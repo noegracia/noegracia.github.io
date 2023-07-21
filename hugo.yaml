@@ -1,4 +1,4 @@
-baseURL: https://mil0tix.github.io
+baseURL: https://noegracia.github.io
 languageCode: en-us
 title: "Noé GRACIA"
 
@@ -25,6 +25,7 @@ languages:
     title: "John's Blog"
     weight: 1
 <<<<<<< HEAD:hugo.yaml
+<<<<<<< HEAD:hugo.yaml
   bn:
     languageCode: bn
     languageName: বাংলা
@@ -37,6 +38,11 @@ defaultContentLanguage: en
     languageName: Français
     weight: 3
 >>>>>>> db4dead (feat: filling sections):config.yaml
+=======
+  # fr:
+  #   languageName: Français
+  #   weight: 3
+>>>>>>> 3b4674f (feat: new post + delete predefined posts):config.yaml
 
 
 # Allow raw html in markdown file
@@ -75,7 +81,7 @@ params:
     favicon: /images/site/favicon.png
 
   # GitHub repo of your site
-  gitRepo: https://github.com/mil0tix/ngracia.github.io
+  gitRepo: https://github.com/noegracia/ngracia.github.io
   # Default branch of your Git repo
   gitBranch: main
 
