@@ -22,7 +22,7 @@ degrees:
     name: Université Paul Sabatier Toulouse III
     url: "https://www.univ-tlse3.fr/"
 
-- name: BAC S
+- name: BAC S (Speciality in Mathematics)
   icon: fa-school
   timeframe: 2002-2018
   institution:
