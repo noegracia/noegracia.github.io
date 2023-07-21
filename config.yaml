@@ -1,4 +1,4 @@
-baseURL: https://mil0tix.github.io
+baseURL: https://noegracia.github.io
 languageCode: en-us
 title: "Noé GRACIA"
 
@@ -22,9 +22,9 @@ languages:
   en:
     languageName: English
     weight: 1
-  fr:
-    languageName: Français
-    weight: 3
+  # fr:
+  #   languageName: Français
+  #   weight: 3
 
 # Force a locale to be use, really useful to develop the application ! Should be commented in production, the "weight" should rocks.
 # DefaultContentLanguage: bn
@@ -63,7 +63,7 @@ params:
     favicon: /images/site/favicon.png
 
   # GitHub repo of your site
-  gitRepo: https://github.com/mil0tix/ngracia.github.io
+  gitRepo: https://github.com/noegracia/ngracia.github.io
   # Default branch of your Git repo
   gitBranch: main
 

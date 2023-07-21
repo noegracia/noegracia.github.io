@@ -20,7 +20,12 @@ skills:
 
 - name: Robotics, 3d perception, computer vision
   logo: /images/sections/skills/robotics.png
-  summary: "Practical and theoretical knowledge in robotics, 3d perception, computer vision (ROS, PnL, YOLO)."
+  summary: "Practical and theoretical knowledge in robotics, 3d perception, computer vision and Digital image processing (ROS, PnL, YOLO)."
+  url: "#"
+
+- name: Natural Lenguage Processing
+  logo: /images/sections/skills/nlp.png
+  summary: "Practical and theoretical knowledge in Natural Lenguage Processing, chatbots and Automatic Speech Recognition. (nltk, spacy, BERT)."
   url: "#"
 
 - name: Git
