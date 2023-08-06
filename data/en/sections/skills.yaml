@@ -41,7 +41,7 @@ skills:
 
 - name: Natural Lenguage Processing
   logo: /images/sections/skills/nlp.png
-  summary: "Practical and theoretical knowledge in Natural Lenguage Processing, chatbots and Automatic Speech Recognition. (nltk, spacy, BERT)."
+  summary: "Practical and theoretical knowledge in Natural Lenguage Processing, chatbots and Automatic Speech Recognition. (nltk, spacy, BERT, RASA, ...)."
   url: "#"
 
 - name: Git
