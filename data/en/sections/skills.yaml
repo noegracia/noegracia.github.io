@@ -46,7 +46,7 @@ skills:
 
 - name: Git
   logo: /images/sections/skills/git.png
-  summary: "Skilled in Git and collaborative programming. I mainly have used Bitbucket and Gitlab but I am familiar with Github as well."
+  summary: "Skilled in Git and collaborative programming. I have used Bitbucket, Gitlab and Github."
   url: "https://git-scm.com/"
 
 - name: Other
