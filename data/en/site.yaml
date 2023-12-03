@@ -15,7 +15,7 @@ customMenus:
 - name: Chat
   # url: chat/
   # redirect to external url
-  url: https://gitter.im/toha-guides/community
+  url: https://interview-now-ai.vercel.app/
 
 - name: Docs
   url: https://toha-guides.netlify.app/posts/
