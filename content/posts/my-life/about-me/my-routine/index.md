@@ -8,7 +8,7 @@ menu:
     identifier: my-routine
     parent: about-me
     weight: 11
-hero: 
+hero: velo.jpg
 tags: ["life","routine"]
 categories: ["Life"]
 ---

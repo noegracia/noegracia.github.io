@@ -1,9 +1,9 @@
 ---
-title: About me
+title: Mountain
 menu:
   sidebar:
-    name: About me
-    identifier: about-me
+    name: Mountain
+    identifier: mountain
     parent: my-life
-    weight: 10
+    weight: 20
 ---

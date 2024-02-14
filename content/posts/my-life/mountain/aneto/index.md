@@ -8,7 +8,7 @@ menu:
     identifier: aneto
     parent: mountain
     weight: 11
-hero: 
+hero: subida.jpg
 tags: ["life","routine"]
 categories: ["Life"]
 ---
