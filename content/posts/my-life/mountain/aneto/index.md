@@ -39,6 +39,6 @@ Our descent back to the car at 1700 meters marked the culmination of a 12-hour o
   <img src="/posts/my-life/mountain/aneto/pico_aneto.jpg" align="center" title="" width="700">
 
   
-Photo at the top of the mountain :P
+Photo at the top of the mountain :P 
 
 ---
