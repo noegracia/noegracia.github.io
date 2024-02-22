@@ -1,6 +1,6 @@
 ---
 title: "3DP-TP-00 | Segmentation de nuages de points 3D par capteur à lumière structurée RGB-D avec CloudCompare"
-date: 2023-10-03T08:06:25+06:00
+date: 2022-10-03T08:06:25+06:00
 description: "Contrôle qualité d'objets 3D."
 summary: "Contrôle qualité d'objets 3D."
 

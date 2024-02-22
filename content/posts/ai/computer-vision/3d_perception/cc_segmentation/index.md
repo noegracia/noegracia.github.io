@@ -1,6 +1,6 @@
 ---
 title: "3DP-TP-00 | 3D segmentation and object shape checking based on RGB-D sensor with CloudCompare"
-date: 2023-10-03T08:06:25+06:00
+date: 2022-10-03T08:06:25+06:00
 description: "3D objects quality control."
 summary: "3D objects quality control."
 
