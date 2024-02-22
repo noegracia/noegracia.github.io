@@ -12,7 +12,7 @@ authors: ["Claire Labit-Bonis"]
 
 hero: featured.png
 
-tags: ["teaching", "3D Perception"]
+tags: ["Master", "3D Perception"]
 
 menu:
   sidebar:
