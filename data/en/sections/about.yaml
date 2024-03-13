@@ -61,16 +61,16 @@ socialLinks:
 # For example, you can put link for your resume.
 resourceLinks:
 - title: "My Resume"
-  url: "files/CV-NOEGRACIA-2023-latex.pdf"
+  url: "files/CV-NOEGRACIA-latex.pdf"
 
 # Show your badges
 # You can show your verifiable certificates from https://www.credly.com.
 # You can also show a circular bar indicating the level of expertise on a certain skill
 badges:
-# - type: certification
-#   name: Certified Kubernetes Security Specialist
-#   url: "https://www.credly.com/org/the-linux-foundation/badge/exam-developer-certified-kubernetes-security-specialist"
-#   badge: "https://images.credly.com/size/680x680/images/f4bf92ed-8985-40b2-bc07-2f9308780854/kubernetes-security-specialist-logo-examdev.png"
+- type: certification
+  name: AWS Certified Machine Learning – Specialty
+  url: "https://www.credly.com/badges/916c048b-d226-4890-b103-303ae0484f5a/"
+  badge: "https://images.credly.com/size/340x340/images/778bde6c-ad1c-4312-ac33-2fa40d50a147/image.png"
 
 # - type: certification
 #   name: Istio and IBM Cloud Kubernetes Service
