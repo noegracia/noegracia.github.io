@@ -72,10 +72,10 @@ badges:
   url: "https://www.credly.com/badges/916c048b-d226-4890-b103-303ae0484f5a/"
   badge: "https://images.credly.com/size/340x340/images/778bde6c-ad1c-4312-ac33-2fa40d50a147/image.png"
 
-# - type: certification
-#   name: Istio and IBM Cloud Kubernetes Service
-#   url: "https://www.credly.com/org/the-linux-foundation/badge/exam-developer-certified-kubernetes-security-specialist"
-#   badge: "https://images.credly.com/size/680x680/images/8d34d489-84bf-4861-a4a0-9e9d68318c5c/Beyond_basics_of_Istio_on_Cloud_v2.png"
+- type: certification
+  name: Hugging Face Deep Reinforcement Learning Certificate of Excellence
+  url: "https://huggingface.co/learn"
+  badge: files/huggin_face_deep_learning.png
 
 # - type: certification
 #   name: Artificial Intelligence and Machine Learning

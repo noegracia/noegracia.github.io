@@ -4,6 +4,6 @@ menu:
   sidebar:
     name: 3D Perception
     identifier: 3d-perception
-    parent: teaching
+    parent: computer-vision
     weight: 10
 ---
