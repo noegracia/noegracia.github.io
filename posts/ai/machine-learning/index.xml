@@ -1,3 +1,154 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Machine learning on Noé GRACIA</title><link>https://noegracia.github.io/posts/ai/machine-learning/</link><description>Recent content in Machine learning on Noé GRACIA</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 10 Jan 2022 08:11:25 +0100</lastBuildDate><atom:link href="https://noegracia.github.io/posts/ai/machine-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>Autoencoder</title><link>https://noegracia.github.io/posts/ai/machine-learning/autoencoder/</link><pubDate>Mon, 10 Jan 2022 08:11:25 +0100</pubDate><guid>https://noegracia.github.io/posts/ai/machine-learning/autoencoder/</guid><description>Creation of pre-trained autoencoder to learn the initial condensed representation of unlabeled datasets. This architecture consists of 3 parts:
-Encoder: Compresses the input data from the train-validation-test set into a coded representation which is typically smaller by several orders of magnitude than the input data. Latent Space: This space contains the compressed knowledge representations and is thus the most crucial part of the network. Decoder: A module that helps the network to &amp;ldquo;decompress&amp;rdquo; the knowledge representations and reconstruct the data from their coded form.</description></item><item><title>Skin Cancer Detection using semantic segmentation</title><link>https://noegracia.github.io/posts/ai/machine-learning/segmentation/</link><pubDate>Tue, 10 Aug 2021 08:13:25 +0100</pubDate><guid>https://noegracia.github.io/posts/ai/machine-learning/segmentation/</guid><description>Skin Cancer Detection Tool README.md Overview The objective of this project is to build a Skin Cancer Detection Tool. The tool that we are creating is a segmentation model of spots (moles, melanomas, etc&amp;hellip;) on microscopic images of the skin. To create this tool we will have to train a semantic segmentation AI model. The data that we use for that training is from The International Skin Imaging Collaboration.
-File Descriptions: data.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Machine learning on Noé Gracia - Portfolio</title><link>https://noegracia.github.io/posts/ai/machine-learning/</link><description>Recent content in Machine learning on Noé Gracia - Portfolio</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 10 Jan 2022 08:11:25 +0100</lastBuildDate><atom:link href="https://noegracia.github.io/posts/ai/machine-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>Autoencoder</title><link>https://noegracia.github.io/posts/ai/machine-learning/autoencoder/</link><pubDate>Mon, 10 Jan 2022 08:11:25 +0100</pubDate><guid>https://noegracia.github.io/posts/ai/machine-learning/autoencoder/</guid><description>&lt;p>Creation of pre-trained autoencoder to learn the initial condensed representation of unlabeled datasets. This architecture consists of 3 parts:&lt;/p>
+&lt;ol>
+&lt;li>Encoder: Compresses the input data from the train-validation-test set into a coded representation which is typically smaller by several orders of magnitude than the input data.&lt;/li>
+&lt;li>Latent Space: This space contains the compressed knowledge representations and is thus the most crucial part of the network.&lt;/li>
+&lt;li>Decoder: A module that helps the network to &amp;ldquo;decompress&amp;rdquo; the knowledge representations and reconstruct the data from their coded form. The output is then compared to a ground truth.&lt;/li>
+&lt;/ol>
+&lt;h2 id="imports">Imports&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> time &lt;span style="color:#f92672">import&lt;/span> time
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> numpy &lt;span style="color:#66d9ef">as&lt;/span> np
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> keras.backend &lt;span style="color:#66d9ef">as&lt;/span> K
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> keras.layers &lt;span style="color:#f92672">import&lt;/span> Dense, Input, Layer, InputSpec, Conv2D, MaxPooling2D, UpSampling2D, Flatten, Reshape, Conv2DTranspose
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> keras.models &lt;span style="color:#f92672">import&lt;/span> Model
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> keras.initializers &lt;span style="color:#f92672">import&lt;/span> VarianceScaling
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> sklearn.cluster &lt;span style="color:#f92672">import&lt;/span> KMeans
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> sklearn.cluster &lt;span style="color:#f92672">import&lt;/span> MiniBatchKMeans
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> sklearn &lt;span style="color:#f92672">import&lt;/span> metrics
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> sklearn.metrics &lt;span style="color:#f92672">import&lt;/span> accuracy_score
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> matplotlib.pyplot &lt;span style="color:#66d9ef">as&lt;/span> plt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> sklearn.manifold &lt;span style="color:#f92672">import&lt;/span> TSNE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> sklearn.decomposition &lt;span style="color:#f92672">import&lt;/span> PCA
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="loading-the-data">Loading the data&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> keras.datasets &lt;span style="color:#f92672">import&lt;/span> mnist
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> keras.datasets &lt;span style="color:#f92672">import&lt;/span> fashion_mnist
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> numpy &lt;span style="color:#66d9ef">as&lt;/span> np
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Chargement et normalisation (entre 0 et 1) des données de la base de données MNIST&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>(x_train, y_train), (x_test, y_test) &lt;span style="color:#f92672">=&lt;/span> mnist&lt;span style="color:#f92672">.&lt;/span>load_data()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x_train &lt;span style="color:#f92672">=&lt;/span> x_train&lt;span style="color:#f92672">.&lt;/span>astype(&lt;span style="color:#e6db74">&amp;#39;float32&amp;#39;&lt;/span>) &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">255.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x_test &lt;span style="color:#f92672">=&lt;/span> x_test&lt;span style="color:#f92672">.&lt;/span>astype(&lt;span style="color:#e6db74">&amp;#39;float32&amp;#39;&lt;/span>) &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">255.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x_train &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>reshape(x_train, (len(x_train), &lt;span style="color:#ae81ff">784&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x_test &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>reshape(x_test, (len(x_test), &lt;span style="color:#ae81ff">784&lt;/span>))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="classic-autoencoder">Classic Autoencoder&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Dimension de l&amp;#39;entrée&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>input_img &lt;span style="color:#f92672">=&lt;/span> Input(shape&lt;span style="color:#f92672">=&lt;/span>(&lt;span style="color:#ae81ff">784&lt;/span>,))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Dimension de l&amp;#39;espace latent : PARAMETRE A TESTER !!&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>latent_dim &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Définition du encodeur&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x0 &lt;span style="color:#f92672">=&lt;/span> Dense(&lt;span style="color:#ae81ff">500&lt;/span>, activation&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;relu&amp;#39;&lt;/span>)(input_img)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> Dense(&lt;span style="color:#ae81ff">200&lt;/span>, activation&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;relu&amp;#39;&lt;/span>)(x0)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>encoded &lt;span style="color:#f92672">=&lt;/span> Dense(latent_dim, activation&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;relu&amp;#39;&lt;/span>)(x)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Définition du décodeur&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>decoder_input &lt;span style="color:#f92672">=&lt;/span> Input(shape&lt;span style="color:#f92672">=&lt;/span>(latent_dim,))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> Dense(&lt;span style="color:#ae81ff">200&lt;/span>, activation&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;relu&amp;#39;&lt;/span>)(decoder_input)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x1 &lt;span style="color:#f92672">=&lt;/span> Dense(&lt;span style="color:#ae81ff">500&lt;/span>, activation&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;relu&amp;#39;&lt;/span>)(x)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>decoded &lt;span style="color:#f92672">=&lt;/span> Dense(&lt;span style="color:#ae81ff">784&lt;/span>, activation&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;relu&amp;#39;&lt;/span>)(x1)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Construction d&amp;#39;un modèle séparé pour pouvoir accéder aux décodeur et encodeur&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>encoder &lt;span style="color:#f92672">=&lt;/span> Model(input_img, encoded)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>decoder &lt;span style="color:#f92672">=&lt;/span> Model(decoder_input, decoded)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Construction du modèle de l&amp;#39;auto-encodeur&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>encoded &lt;span style="color:#f92672">=&lt;/span> encoder(input_img)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>decoded &lt;span style="color:#f92672">=&lt;/span> decoder(encoded)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>autoencoder &lt;span style="color:#f92672">=&lt;/span> Model(input_img, decoded)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="summary">Summary&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Autoencodeur &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>autoencoder&lt;span style="color:#f92672">.&lt;/span>compile(optimizer&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;Adam&amp;#39;&lt;/span>, loss&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;mse&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>autoencoder&lt;span style="color:#f92672">.&lt;/span>summary()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(encoder&lt;span style="color:#f92672">.&lt;/span>summary())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(decoder&lt;span style="color:#f92672">.&lt;/span>summary())
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="training">Training&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>autoencoder&lt;span style="color:#f92672">.&lt;/span>fit(x_train, x_train,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> epochs&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">20&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> batch_size&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">128&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> shuffle&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> validation_data&lt;span style="color:#f92672">=&lt;/span>(x_test, x_test))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="evaluation">Evaluation&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Encode and decode some digits&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Note that we take them from the *test* set&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>encoded_imgs &lt;span style="color:#f92672">=&lt;/span> encoder&lt;span style="color:#f92672">.&lt;/span>predict(x_test)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>decoded_imgs &lt;span style="color:#f92672">=&lt;/span> decoder&lt;span style="color:#f92672">.&lt;/span>predict(encoded_imgs)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="visualization">Visualization&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>n &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span> &lt;span style="color:#75715e"># How many digits we will display&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>figure(figsize&lt;span style="color:#f92672">=&lt;/span>(&lt;span style="color:#ae81ff">20&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(n):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Display original&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ax &lt;span style="color:#f92672">=&lt;/span> plt&lt;span style="color:#f92672">.&lt;/span>subplot(&lt;span style="color:#ae81ff">2&lt;/span>, n, i &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>imshow(x_test[i]&lt;span style="color:#f92672">.&lt;/span>reshape(&lt;span style="color:#ae81ff">28&lt;/span>, &lt;span style="color:#ae81ff">28&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>gray()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ax&lt;span style="color:#f92672">.&lt;/span>get_xaxis()&lt;span style="color:#f92672">.&lt;/span>set_visible(&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ax&lt;span style="color:#f92672">.&lt;/span>get_yaxis()&lt;span style="color:#f92672">.&lt;/span>set_visible(&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Display reconstruction&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ax &lt;span style="color:#f92672">=&lt;/span> plt&lt;span style="color:#f92672">.&lt;/span>subplot(&lt;span style="color:#ae81ff">2&lt;/span>, n, i &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">+&lt;/span> n)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>imshow(decoded_imgs[i]&lt;span style="color:#f92672">.&lt;/span>reshape(&lt;span style="color:#ae81ff">28&lt;/span>, &lt;span style="color:#ae81ff">28&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>gray()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ax&lt;span style="color:#f92672">.&lt;/span>get_xaxis()&lt;span style="color:#f92672">.&lt;/span>set_visible(&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ax&lt;span style="color:#f92672">.&lt;/span>get_yaxis()&lt;span style="color:#f92672">.&lt;/span>set_visible(&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>show()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://noegracia.github.io/posts/ai/machine-learning/autoencoder/images/coded-decoded-mnist.png"
+alt="Coded-Decoded-MNIST"
+class="center"
+>
+&lt;div style="margin-top: rem;">&lt;/div>
+&lt;h2 id="display">Display&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Affichage&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>count&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1000&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>idx &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>random&lt;span style="color:#f92672">.&lt;/span>choice(len(x_test), count)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>inputs &lt;span style="color:#f92672">=&lt;/span> x_test[idx]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>coordsAC &lt;span style="color:#f92672">=&lt;/span> encoder&lt;span style="color:#f92672">.&lt;/span>predict(inputs)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>coordsTSNE &lt;span style="color:#f92672">=&lt;/span> TSNE(n_components&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>fit_transform(inputs&lt;span style="color:#f92672">.&lt;/span>reshape(count, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>coordsPCA &lt;span style="color:#f92672">=&lt;/span> PCA(n_components&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>fit_transform(inputs&lt;span style="color:#f92672">.&lt;/span>reshape(count, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>classes &lt;span style="color:#f92672">=&lt;/span> y_test[idx]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fig, ax &lt;span style="color:#f92672">=&lt;/span> plt&lt;span style="color:#f92672">.&lt;/span>subplots(figsize&lt;span style="color:#f92672">=&lt;/span>(&lt;span style="color:#ae81ff">10&lt;/span>, &lt;span style="color:#ae81ff">7&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ax&lt;span style="color:#f92672">.&lt;/span>set_title(&lt;span style="color:#e6db74">&amp;#34;Espace latent&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>scatter(coordsAC[:, &lt;span style="color:#ae81ff">0&lt;/span>], coordsAC[:, &lt;span style="color:#ae81ff">1&lt;/span>], c&lt;span style="color:#f92672">=&lt;/span>classes, cmap&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Paired&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>colorbar()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fig2, ax2 &lt;span style="color:#f92672">=&lt;/span> plt&lt;span style="color:#f92672">.&lt;/span>subplots(figsize&lt;span style="color:#f92672">=&lt;/span>(&lt;span style="color:#ae81ff">10&lt;/span>, &lt;span style="color:#ae81ff">7&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ax2&lt;span style="color:#f92672">.&lt;/span>set_title(&lt;span style="color:#e6db74">&amp;#34;ACP sur espace latent&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>scatter(coordsPCA[:, &lt;span style="color:#ae81ff">0&lt;/span>], coordsPCA[:, &lt;span style="color:#ae81ff">1&lt;/span>], c&lt;span style="color:#f92672">=&lt;/span>classes, cmap&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Paired&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>colorbar()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fig3, ax3 &lt;span style="color:#f92672">=&lt;/span> plt&lt;span style="color:#f92672">.&lt;/span>subplots(figsize&lt;span style="color:#f92672">=&lt;/span>(&lt;span style="color:#ae81ff">10&lt;/span>, &lt;span style="color:#ae81ff">7&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ax3&lt;span style="color:#f92672">.&lt;/span>set_title(&lt;span style="color:#e6db74">&amp;#34;tSNE sur espace latent&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>scatter(coordsTSNE[:, &lt;span style="color:#ae81ff">0&lt;/span>], coordsTSNE[:, &lt;span style="color:#ae81ff">1&lt;/span>], c&lt;span style="color:#f92672">=&lt;/span>classes, cmap&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Paired&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>colorbar()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://noegracia.github.io/posts/ai/machine-learning/autoencoder/images/latent-space.png"
+alt="Coded-Decoded-MNIST"
+class="center"
+>
+&lt;div style="margin-top: rem;">&lt;/div>
+&lt;img src="https://noegracia.github.io/posts/ai/machine-learning/autoencoder/images/latent-space-acp.png"
+alt="Coded-Decoded-MNIST"
+class="center"
+>
+&lt;div style="margin-top: rem;">&lt;/div>
+&lt;img src="https://noegracia.github.io/posts/ai/machine-learning/autoencoder/images/latent-space-tsne.png"
+alt="Coded-Decoded-MNIST"
+class="center"
+>
+&lt;div style="margin-top: rem;">&lt;/div></description></item><item><title>Skin Cancer Detection using semantic segmentation</title><link>https://noegracia.github.io/posts/ai/machine-learning/segmentation/</link><pubDate>Tue, 10 Aug 2021 08:13:25 +0100</pubDate><guid>https://noegracia.github.io/posts/ai/machine-learning/segmentation/</guid><description>&lt;h1 id="skin-cancer-detection-tool-readmemd">Skin Cancer Detection Tool README.md&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>The objective of this project is to build a Skin Cancer Detection Tool. The tool that we are creating is a segmentation model of spots (moles, melanomas, etc&amp;hellip;) on microscopic images of the skin. To create this tool we will have to train a semantic segmentation AI model. The data that we use for that training is from &lt;a href="https://gallery.isic-archive.com/#!/topWithHeader/onlyHeaderTop/gallery?filter=%5B%5D" target="_blank" rel="noopener">The International Skin Imaging Collaboration&lt;/a>.&lt;/p>
+&lt;h2 id="file-descriptions">File Descriptions:&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>data.py&lt;/strong>: Contains functions to process and load the dataset, preprocess the images, and masks and to create TensorFlow datasets.&lt;/p></description></item></channel></rss>
