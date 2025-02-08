@@ -9,10 +9,22 @@ section:
 # Your experiences
 experiences:
   - company:
-      name: Groupe ZeKat
+      name: Aqsone
       url: "#"
       location: Toulouse, Occitanie, France
-      overview: Involvement in neural network implementation, AI pipeline creation, embedded programming, and data analysis and processing.
+      overview: Currently working in LLM chatbots, RAG and anomaly detection.
+    positions:
+      - designation: Data Scientist
+        start: Jun 2024
+        end: Present
+        responsibilities:
+          - Implementation of AI solutions
+          - Involvement in every development step of the pipeline
+  - company:
+      name: fly4u (Groupe ZeKat)
+      url: "#"
+      location: Toulouse, Occitanie, France
+      overview: Creation and improvement of a pipeline to develop edge AI solutions.
     positions:
       - designation: R&D AI Engineer
         start: Sep 2022
@@ -22,12 +34,6 @@ experiences:
           - AI Pipeline creation
           - Embedded programming
           - Data analysis and processing
-  - company:
-      name: fly4u
-      url: "#"
-      location: Toulouse, Occitanie, France
-      overview: Development of an aircraft flight detection algorithm compatible with the constraints of embedded systems.
-    positions:
       - designation: R&D AI Engineer
         start: May 2022
         end: Aug 2022
@@ -35,17 +41,20 @@ experiences:
           - Data preprocessing
           - Feature extraction
           - AI software development
+
+
   - company:
       name: Ecole Nationale Vétérinaire de Toulouse
       url: "#"
       location: Plaisance-du-Touch, Occitanie, France
-      overview: Development of a digital tool for zookeepers and veterinarians to monitor animal well-being (Vita'nimal).
     positions:
       - designation: Web Application Developer
         start: Jan 2022
         end: Mar 2022
         responsibilities:
           - Developed a digital tool for zookeepers and veterinarians to monitor animal well-being (Vita'nimal)
+          - Front and back-end development
+          - React and Django
   - company:
       name: Université Paul Sabatier Toulouse III
       url: "#"
