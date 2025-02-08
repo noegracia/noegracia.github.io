@@ -10,17 +10,17 @@ section:
   # hideTitle: true
 
 # filter buttons
-buttons:
-- name: All
-  filter: "all"
-- name: Basic
-  filter: "basic"
-- name: Language
-  filter: "language"
-- name: Container
-  filter: "container"
-- name: Others
-  filter: "others"
+# buttons:
+# - name: All
+#   filter: "all"
+# - name: Basic
+#   filter: "basic"
+# - name: Language
+#   filter: "language"
+# - name: Container
+#   filter: "container"
+# - name: Others
+#   filter: "others"
 
 # Your Skills.
 skills:

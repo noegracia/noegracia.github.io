@@ -22,27 +22,11 @@ languages:
   en:
     languageCode: en
     languageName: English
-    title: "John's Blog"
+    title: "Noé Gracia - Portfolio"
     weight: 1
-<<<<<<< HEAD:hugo.yaml
-<<<<<<< HEAD:hugo.yaml
-  bn:
-    languageCode: bn
-    languageName: বাংলা
-    title: জনের ব্লগ
-    weight: 2
-# default language for the content
-defaultContentLanguage: en
-=======
-  fr:
-    languageName: Français
-    weight: 3
->>>>>>> db4dead (feat: filling sections):config.yaml
-=======
   # fr:
   #   languageName: Français
   #   weight: 3
->>>>>>> 3b4674f (feat: new post + delete predefined posts):config.yaml
 
 
 # Allow raw html in markdown file
@@ -116,7 +100,7 @@ params:
       # Share post on different social media
       shareButtons:
         # facebook: true
-        twitter: true
+        x: true
         linkedin: true
         reddit: true
         whatsapp: true
@@ -135,7 +119,7 @@ params:
       enable: false
       services:
         disqus:
-          shortName: toha-example-site
+          shortName: noe-gracia-portfolio
         # valine:
         #   appId: HTV6askWxVo3vOxlqjjaq2hd-MsYXbMMI
         #   appKey: pVrT3C85KGIuk27t07eh6bUC
