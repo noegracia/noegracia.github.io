@@ -157,4 +157,4 @@ class="center"
 &lt;h2 id="file-descriptions">File Descriptions:&lt;/h2>
 &lt;ol>
 &lt;li>
-&lt;p>&lt;strong>data.py&lt;/strong>: Contains functions to process and load the dataset, preprocess the images, and masks and to create TensorFlow datasets.&lt;/p></description></item><item><title>Perception 3D</title><link>https://noegracia.github.io/posts/ai/computer-vision/3d_perception/_index.fr/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://noegracia.github.io/posts/ai/computer-vision/3d_perception/_index.fr/</guid><description/></item></channel></rss>
+&lt;p>&lt;strong>data.py&lt;/strong>: Contains functions to process and load the dataset, preprocess the images, and masks and to create TensorFlow datasets.&lt;/p></description></item></channel></rss>
