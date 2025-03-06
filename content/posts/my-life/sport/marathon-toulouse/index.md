@@ -6,7 +6,7 @@ menu:
   sidebar:
     name: My first Marathon
     identifier: marathon-toulouse
-    parent: life
+    parent: sport
     weight: 11
 hero: run1.jpg
 tags: ["life","routine"]
@@ -19,7 +19,7 @@ The adventure of my **first marathon** started long before the actual race. From
 
 ## Training - The Long Road to 42K
 
-It all started in **July 2024**, when I began training for my first ever marathon. Most of my runs were **outdoors**, exploring the city and nearby trails, gradually building up my endurance and pace.
+It all started in **July 2024**, when I began training for my first ever marathon. Most of my runs were **outdoors**, exploring the city and nearby trails, gradually building up my endurance and pace. I trained mainly with a colleague, who not only shared the long runs but also motivated me to stay consistent — honestly, without him, I probably wouldn’t even have signed up for the marathon in the first place.
 
 My goal was to complete it in less than 4 hours as I saw this interesting and funny graph of marathon finishing times.
 <img src="graph_finish_times.png" align="center" title="Training Progress - Weeks & Distance" width="700">
