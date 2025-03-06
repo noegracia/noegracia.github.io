@@ -21,9 +21,9 @@ Every day, I make sure to prioritize my physical well-being. My routine includes
 
 ## Meal Preps
 
-Nutrition is a crucial part of maintaining a balanced lifestyle. I'm a dedicated meal prepper, ensuring that I have a nutritious meal ready for the next day to avoid long meal breaks. My meal prep is pretty simple. It always includes 3 important components: protein sources like chicken, salmon, or beef, coupled with carbohydrates like rice or pasta, and vegetables. On weekends, I allow myself to be more flexible, enjoying restaurant meals. I eat a lot of fruits, my favorites being bananas, kiwis and tangerines in season.
+Nutrition is a crucial part of maintaining a balanced lifestyle. I'm a dedicated meal prepper, ensuring that I have a nutritious meal ready for the next day to avoid long meal breaks. My meal prep is pretty simple. It always includes 3 important components: protein sources like chicken, salmon, or beef, coupled with carbohydrates like rice or pasta, and vegetables. On weekends, I allow myself to be more flexible, enjoying restaurant meals. I eat a lot of fruit, my favorites being bananas, kiwis and tangerines in season.
 
 ## Sleep
 
-A good night's sleep is non-negotiable in my routine. I aim for a solid 7-8 hours of rest every night. To ensure a peaceful night's sleep, I have a calming bedtime routine. I brush my teeths, do my skincare and then I like to wind down with a good book; currently, I'm immersed in Brandon Sanderson's "The Final Empire". I make sure to close all windows and shut off every light, creating the perfect sleep environment.
+A good night's sleep is non-negotiable in my routine. I aim for a solid 7-8 hours of rest every night. To ensure a peaceful night's sleep, I have a calming bedtime routine. I brush my teeth, do my skincare and then I like to wind down with a good book; currently, I'm immersed in Brandon Sanderson's "The Final Empire". I make sure to close all windows and shut off every light, creating the perfect sleep environment.
 
