@@ -91,7 +91,7 @@ Running my first marathon was an unforgettable personal milestone — but I can�
 
 - **Merging the half-marathon with the marathon around km 26 created a lot of unnecessary difficulties.** The way it was handled led to constant dodging, broken rhythm, and added fatigue, especially in the final stretch.
 - **Post-race exit was chaotic and overcrowded**, with **long waits to leave Place du Capitole** — not ideal when you’re cramping and just want to sit down.
-- **For a €70 entry fee, the overall organization and services felt expensive for what was provided.**
+- The overall organization and services felt expensive **for what was provided.**
 
 ---
 
