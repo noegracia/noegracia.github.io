@@ -18,9 +18,10 @@ experiences:
         start: Jun 2024
         end: Present
         responsibilities:
-          - "**Logistics Client:** Engineered pipeline for monthly processing of **millions** of transport and invoice records. Implemented **ML models** for **anomaly detection**, resulting in a dynamic **dashboard** for recurring anomaly resolution."
-          - "**Airbus HR:** Built dashboards/KPIs (leveraging **NLP**, **optimization**, **data analysis**) driving **millions in savings** and reducing inequalities. Developed **LLM**-based solution for enhanced internal mobility candidate identification."
-          - "Led internal **LLM chatbot** projects with sophisticated **agent designs**, **RAG pipelines**, and robust **data preprocessing**."
+          - "**Logistics Client:** Designed and engineered a scalable **ML pipeline** for processing **millions of monthly records**; architected the solution to be compatible with **AWS SageMaker** for model training and deployment."
+          - "**Airbus - People Analytics:** Built **NLP** and **LLM**-based solutions for internal mobility candidate matching (using **GCP - Vertex AI**). Delivered operational tools (using **NLP** and **OCR**)."
+          - "**Airbus - Manufacturing:** Optimized a high-scale manufacturing pipelines, reducing computational costs by **70%** and improved non-conformity prioritization by implementing **NLP** solutions."
+          - "**Internal:** Led **LLM chatbot** projects with sophisticated **agent designs**, **RAG** and **data preprocessing**. Led technical workshops on **Git**, **FastAPI**, and **Jenkins**, standardizing **DevOps** and backend practices across engineering team."
   - company:
       name: fly4u (Groupe ZeKat)
       url: "#"
@@ -31,7 +32,7 @@ experiences:
         start: May 2022
         end: Sep 2023
         responsibilities:
-          - "Developed pipeline for **embedded AI solutions**, including tools for **data processing**, **time series labelling**, and **visualization**."
+          - "Developed a pipeline for **embedded AI solutions**, including tools for **data processing**, **time series labelling**, and **visualization**."
           - "Designed, trained, and evaluated diverse **AI models** for **anomaly detection**, **classification**, and **forecasting**."
           - "Focused on **embedded implementation** of ML models using **C/C++**."
 

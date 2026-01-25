@@ -26,12 +26,12 @@ section:
 skills:
 - name: Python
   logo: /images/sections/skills/python.png
-  summary: "Expertise in Python and core libraries used in statistics, data analysis and AI (Pandas, Tensorflow, Pytorch, Sklearn, Scipy, SQL, Matplotlib, OpenCV)."
+  summary: "Expertise in Python and core libraries used in data analysis, AI and machine learning techniques and architectures (ML, NLP, LLM, CV). (Pandas, Tensorflow, Pytorch, Sklearn, Scipy, SQL, Matplotlib, OpenCV)"
   url: "https://www.python.org/"
 
 - name: C, C++
   logo: /images/sections/skills/c++.png
-  summary: "Experience in C, C++, embedded systems and embedded AI (TF Lite, CMSIS)."
+  summary: "Experience in C, C++, embedded systems and constrained AI (TF Lite, CMSIS, ONNX)."
   url: "#"
 
 - name: Robotics, 3d perception, computer vision

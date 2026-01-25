@@ -19,7 +19,7 @@ company:
 # resume: "files/resume.pdf"
 
 # a summary about you
-summary: "As a passionate AI Engineer with a Master's degree in Artificial Intelligence, I am a hardworking and self-motivated individual with a strong desire to learn and grow. I have practical and theoretical knowledge in a broad range of AI and machine learning techniques and architectures, and I am skilled in Python and core libraries used in statistics, data analysis, and AI. My experience includes neural network implementation, embedded programming, data analysis and processing, and AI software development. I am always looking for new challenges to help me develop my skills and expertise. I am seeking a challenging role as a Machine Learning Engineer or AI Engineer where I can apply my skills and expertise to develop innovative solutions."
+summary: "Passionate Data Scientist / AI Engineer with solid practical experience and advanced training in the field."
 
 # your social links
 # give as many as you want. use font-awesome for the icons.
@@ -61,7 +61,7 @@ socialLinks:
 # For example, you can put link for your resume.
 resourceLinks:
 - title: "My Resume"
-  url: "files/CV-NOEGRACIA-latex.pdf"
+  url: "files/CV_NOE_GRACIA_2026.pdf"
 
 # Show your badges
 # You can show your verifiable certificates from https://www.credly.com.

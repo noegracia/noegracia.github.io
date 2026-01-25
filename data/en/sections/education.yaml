@@ -14,6 +14,7 @@ degrees:
   institution:
     name: Université Paul Sabatier Toulouse III
     url: "https://www.univ-tlse3.fr/"
+  description: "Speciality in AI and interaction: intelligent interactive systems, robotics, image processing/computer vision, NLP. Top 1 rank in AI 3 and MOBILE ROBOTICS"
 
 - name: Bachelor of Technology - BTech
   icon: fa-graduation-cap
