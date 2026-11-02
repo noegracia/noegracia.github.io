@@ -1,0 +1,53 @@
+// Keep the notice in the document flow below Toha's fixed 50px navigation.
+// It appears on every page without covering content or requiring JavaScript.
+.legacy-banner {
+  margin-top: 50px;
+  padding: 0.75rem 1rem;
+  background: #fff3cd;
+  color: #332701;
+  border-bottom: 1px solid #b88a16;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.legacy-banner__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem 1.25rem;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.legacy-banner p {
+  margin: 0;
+}
+
+.legacy-banner a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  min-height: 44px;
+  color: #493400 !important;
+  font-weight: 700;
+  text-decoration: underline !important;
+  text-underline-offset: 0.2em;
+}
+
+.legacy-banner a:hover {
+  color: #201700 !important;
+}
+
+.legacy-banner a:focus-visible {
+  outline: 3px solid #493400;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (max-width: 575px) {
+  .legacy-banner__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

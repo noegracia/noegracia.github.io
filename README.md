@@ -6,3 +6,17 @@ An example hugo static site with Toha theme.
 
 Attributions:
 - <a href='https://www.freepik.com/vectors/business'>Business vector created by studiogstock - www.freepik.com</a>
+
+
+## Legacy portfolio notice
+
+This site remains available as an archive. Every HTML page displays a notice
+linking to the current portfolio at `https://noegracia.eu/`. Publish these
+changes only after the new portfolio is live. There is no automatic redirect.
+
+The shared banner is in `layouts/partials/legacy-banner.html`; its responsive
+styles are in `assets/styles/override.scss`. It appears below the navigation
+and scrolls with the page, with no popup, dismissal state or JavaScript.
+The home and base layouts are copied from Toha v4.9.0 with only the banner
+partial added at the start of the body. Compare these overrides with upstream
+when upgrading the theme. The old site's `baseURL` stays unchanged.
